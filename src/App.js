@@ -1,25 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
+import CreateCard from './createCard';
+
+const url = 'https://course-api.com/react-tours-project'
 
 function App() {
+
+  const [tourLocationData, setTourLocationData] = useState([]);
+
+  const apiFetch = async () => {
+    const response = await fetch(url)
+    const tourLocations = await (await response).json();
+    setTourLocationData(tourLocations)
+  }
+
+  useEffect(() => {
+    apiFetch()
+  }, []);
+
+  const deleteCard = (recievedId) => {
+    let NewTourLocaion = tourLocationData.filter(location => {
+      return location.id !== recievedId;
+    })
+    setTourLocationData(NewTourLocaion);
+
+  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className='underline'>Our Tour</h1>
+      {tourLocationData.map((location) => <CreateCard className="card" key={location.id} location={location} deleteCard = {deleteCard} />)}
     </div>
   );
 }
+
+
 
 export default App;
