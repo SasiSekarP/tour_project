@@ -4,7 +4,7 @@ const CreateCard = (props) => {
     let { id, name, info, image, price } = { ...location }
     return (
         <div className="card">
-            <img src={image} />
+            <img src={image} alt={name}/>
             <div className="cardRow1">
                 <div className="left">
                     <h2>{name}</h2>
