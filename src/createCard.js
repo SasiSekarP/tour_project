@@ -1,7 +1,8 @@
-import React from "react";
+import {React, useState } from "react";
 const CreateCard = (props) => {
     let { location,deleteCard} = { ...props }
     let { id, name, info, image, price } = { ...location }
+    const [readMore, setReadMore] = useState(true);
     return (
         <div className="card">
             <img src={image} />
@@ -11,7 +12,7 @@ const CreateCard = (props) => {
                 </div>
                 <h2 className="right">$ {price}</h2>
             </div>
-            <p>{info}</p>
+            {readMore ? <p>{`${info.substring(0, 200)}...`} <button className="noOutLine" onClick={() => { setReadMore(!readMore) }}>read more</button></p> : <p>{`${info}`} <button className="noOutLine" onClick={() => { setReadMore(!readMore) }}>show less</button></p>}
             <div className="buttonContainer">
                 <button type="button" className="btn" onClick={() => {deleteCard(id)}}>
                     Not Intrest
