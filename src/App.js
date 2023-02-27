@@ -25,6 +25,14 @@ function App() {
     setTourLocationData(NewTourLocaion);
 
   }
+
+  if (tourLocationData.length === 0) {
+    return (
+      <div className="App">
+        <h1 className='underline'>All cards are deleted</h1>
+      </div>
+    )
+  }
   
   return (
     <div className="App">
