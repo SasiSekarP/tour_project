@@ -78,6 +78,8 @@ p{
 .noOutLine{
     border: none;
     background-color: white;
+    color: blue;
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 526px){
