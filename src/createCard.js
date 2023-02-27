@@ -5,7 +5,7 @@ const CreateCard = (props) => {
     const [readMore, setReadMore] = useState(true);
     return (
         <div className="card">
-            <img src={image} />
+            <img src={image} alt={name}/>
             <div className="cardRow1">
                 <div className="left">
                     <h2>{name}</h2>
